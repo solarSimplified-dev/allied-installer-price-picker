@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  min-height: 100vh;
+  background-color: #F0F0EB;
+  margin: 0;
+  padding: 0;
+}
+
 @layer base {
   :root {
     --background: 60 10% 93%;

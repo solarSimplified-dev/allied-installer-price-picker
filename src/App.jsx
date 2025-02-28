@@ -104,9 +104,9 @@ export default function App() {
     : 0;
 
   return (
-    <div className="p-6 max-w-7xl mx-auto" style={{ backgroundColor: "#F0F0EB" }}>
+    <div className="p-6 max-w-7xl mx-auto">
       {/* First row: Admin Panel and Price Picker side by side */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6 h-full">
         <AdminPanel
           alpha={alpha}
           setAlpha={setAlpha}
@@ -131,7 +131,7 @@ export default function App() {
       </div>
 
       {/* Second row: Cash Flow Simulator and Value Proposition side by side */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
         <CashFlowSimulator
         initialSubscriptions={initialSubscriptions}
         setInitialSubscriptions={setInitialSubscriptions}
