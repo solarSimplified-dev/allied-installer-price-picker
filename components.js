@@ -177,11 +177,10 @@ const motion = {
 };
 
 // Recharts Components
-const {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  Tooltip: RechartTooltip,
-  ResponsiveContainer
-} = Recharts;
+// Access Recharts from the global scope
+const BarChart = window.Recharts.BarChart;
+const Bar = window.Recharts.Bar;
+const XAxis = window.Recharts.XAxis;
+const YAxis = window.Recharts.YAxis;
+const RechartTooltip = window.Recharts.Tooltip;
+const ResponsiveContainer = window.Recharts.ResponsiveContainer;

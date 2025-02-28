@@ -4,64 +4,245 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pricing Slider</title>
-    <!-- React and ReactDOM -->
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <!-- Babel for JSX -->
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <!-- Framer Motion -->
-    <script src="https://unpkg.com/framer-motion@10.12.16/dist/framer-motion.js"></script>
-    <!-- Recharts -->
-    <script src="https://unpkg.com/recharts@2.6.2/umd/Recharts.js"></script>
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@0.244.0/dist/umd/lucide.min.js"></script>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: #F0F0EB;
+            margin: 0;
+            padding: 20px;
+            color: #191919;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .card {
+            background-color: #FAFAF7;
+            border: 1px solid #BFBFBA;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+        }
+        
+        h1, h2, h3 {
+            color: #191919;
+        }
+        
+        .slider-container {
+            margin: 20px 0;
+        }
+        
+        input[type="range"] {
+            width: 100%;
+            height: 8px;
+            border-radius: 5px;
+            background: #BFBFBA;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #D4A27F;
+            cursor: pointer;
+        }
+        
+        .price-display {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        
+        .price-box {
+            text-align: left;
+        }
+        
+        .price-label {
+            font-size: 14px;
+            color: #666663;
+            margin-bottom: 5px;
+        }
+        
+        .price-value {
+            font-size: 20px;
+            font-weight: 600;
+        }
+        
+        .button {
+            background-color: #CC785C;
+            color: white;
+            border: none;
+            border-radius: 0.375rem;
+            padding: 0.75rem 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+        
+        .button:hover {
+            background-color: #B56A50;
+        }
+        
+        .admin-panel {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #E5E4DF;
+            border-radius: 8px;
+        }
+        
+        .admin-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .control-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #262625;
+        }
+        
+        .control-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #BFBFBA;
+            border-radius: 4px;
+            background-color: #FAFAF7;
+        }
+    </style>
 </head>
 <body>
-    <div id="root"></div>
-    
-    <!-- Component styles -->
+    <div class="container">
+        <div class="card">
+            <h1>Pick Your Price</h1>
+            <p>Move the slider to adjust your Monthly Subscription and Per-Sale Cost.</p>
+            
+            <div class="slider-container">
+                <input type="range" id="price-slider" min="0" max="100" value="0">
+            </div>
+            
+            <div class="price-display">
+                <div class="price-box">
+                    <div class="price-label">Monthly Subscription</div>
+                    <div class="price-value" id="monthly-price">$1/month</div>
+                </div>
+                <div class="price-box">
+                    <div class="price-label">Per-Sale Cost</div>
+                    <div class="price-value" id="per-sale-price">$5,000/sale</div>
+                </div>
+            </div>
+            
+            <button class="button">Get Started</button>
+        </div>
+        
+        <div class="card admin-panel">
+            <h2>Admin Panel</h2>
+            <div class="admin-controls">
+                <div class="control-group">
+                    <label for="alpha">Alpha</label>
+                    <input type="number" id="alpha" value="0.25" step="0.01">
+                </div>
+                <div class="control-group">
+                    <label for="base-per-sale">Max $/Sale</label>
+                    <input type="number" id="base-per-sale" value="5000">
+                </div>
+                <div class="control-group">
+                    <label for="monthly-offset">Offset</label>
+                    <input type="number" id="monthly-offset" value="0" step="0.01">
+                </div>
+                <div class="control-group">
+                    <label for="min-monthly">Min $/Month</label>
+                    <input type="number" id="min-monthly" value="1">
+                </div>
+                <div class="control-group">
+                    <label for="max-monthly">Max $/Month</label>
+                    <input type="number" id="max-monthly" value="50000">
+                </div>
+                <div class="control-group">
+                    <label for="min-cost-per-sale">Min $/Sale</label>
+                    <input type="number" id="min-cost-per-sale" value="0">
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        border: "#BFBFBA",
-                        background: "#FAFAF7",
-                        primary: "#228B22",
-                        secondary: "#CC785C",
-                        muted: "#E5E4DF",
-                        text: {
-                            primary: "#191919",
-                            secondary: "#262625",
-                            muted: "#666663"
-                        }
-                    }
-                }
-            }
+        // Utility functions
+        function sliderValueToMonthly(sliderVal, minMonthly, maxMonthly) {
+            const t = sliderVal / 100;
+            return Math.exp(Math.log(minMonthly) + (Math.log(maxMonthly) - Math.log(minMonthly)) * t);
         }
-    </script>
-    
-    <!-- Utility Functions -->
-    <script type="text/babel" src="utils.js"></script>
-    
-    <!-- UI Components -->
-    <script type="text/babel" src="components.js"></script>
-    
-    <!-- Component Modules -->
-    <script type="text/babel" src="pricing-core.js"></script>
-    <script type="text/babel" src="cash-flow.js"></script>
-    <script type="text/babel" src="value-proposition.js"></script>
-    
-    <!-- Main Application -->
-    <script type="text/babel" src="app.js"></script>
-    
-    <!-- Initialize App -->
-    <script type="text/babel">
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<PricingSelectorAdminWithTooltips />);
+
+        function monthlyToPerSale(monthly, alpha, basePerSale, monthlyOffset, minCostPerSale, minMonthly, maxMonthly) {
+            // Normalize monthly to a value between 0 and 1
+            const normalizedMonthly = (Math.log(monthly) - Math.log(minMonthly)) / (Math.log(maxMonthly) - Math.log(minMonthly));
+            
+            // Apply alpha and offset
+            let t = normalizedMonthly;
+            const normalizedOffset = monthlyOffset / (maxMonthly - minMonthly);
+            t = Math.max(0, Math.min(1, t + normalizedOffset));
+            t = Math.pow(t, alpha);
+            
+            // Interpolate between max and min per-sale costs
+            return basePerSale - t * (basePerSale - minCostPerSale);
+        }
+
+        // DOM elements
+        const slider = document.getElementById('price-slider');
+        const monthlyPriceDisplay = document.getElementById('monthly-price');
+        const perSalePriceDisplay = document.getElementById('per-sale-price');
+        
+        // Admin inputs
+        const alphaInput = document.getElementById('alpha');
+        const basePerSaleInput = document.getElementById('base-per-sale');
+        const monthlyOffsetInput = document.getElementById('monthly-offset');
+        const minMonthlyInput = document.getElementById('min-monthly');
+        const maxMonthlyInput = document.getElementById('max-monthly');
+        const minCostPerSaleInput = document.getElementById('min-cost-per-sale');
+        
+        // Update prices based on slider and admin inputs
+        function updatePrices() {
+            const sliderVal = parseInt(slider.value);
+            const alpha = parseFloat(alphaInput.value);
+            const basePerSale = parseFloat(basePerSaleInput.value);
+            const monthlyOffset = parseFloat(monthlyOffsetInput.value);
+            const minMonthly = parseFloat(minMonthlyInput.value);
+            const maxMonthly = parseFloat(maxMonthlyInput.value);
+            const minCostPerSale = parseFloat(minCostPerSaleInput.value);
+            
+            const monthly = sliderValueToMonthly(sliderVal, minMonthly, maxMonthly);
+            const perSale = monthlyToPerSale(monthly, alpha, basePerSale, monthlyOffset, minCostPerSale, minMonthly, maxMonthly);
+            
+            const monthlyDisplay = Math.round(monthly);
+            const perSaleDisplay = Math.round(perSale);
+            
+            monthlyPriceDisplay.textContent = `$${monthlyDisplay.toLocaleString()}/month`;
+            perSalePriceDisplay.textContent = `$${perSaleDisplay.toLocaleString()}/sale`;
+        }
+        
+        // Event listeners
+        slider.addEventListener('input', updatePrices);
+        alphaInput.addEventListener('input', updatePrices);
+        basePerSaleInput.addEventListener('input', updatePrices);
+        monthlyOffsetInput.addEventListener('input', updatePrices);
+        minMonthlyInput.addEventListener('input', updatePrices);
+        maxMonthlyInput.addEventListener('input', updatePrices);
+        minCostPerSaleInput.addEventListener('input', updatePrices);
+        
+        // Initialize
+        updatePrices();
     </script>
 </body>
 </html>
