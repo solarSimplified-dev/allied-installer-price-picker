@@ -54,18 +54,15 @@ export function calculateProjection(
   let currentSubscriptions = initialSubscriptions;
 
   for (let month = 0; month < months; month++) {
-    const churnedCustomers = Math.round(
-      currentSubscriptions * (churnRate / 100)
-    );
-    const newCustomers = Math.round(
-      currentSubscriptions * (growthRate / 100)
-    );
+    // Use exact values for calculations
+    const churnedCustomers = currentSubscriptions * (churnRate / 100);
+    const newCustomers = currentSubscriptions * (growthRate / 100);
     currentSubscriptions = currentSubscriptions - churnedCustomers + newCustomers;
 
-    const monthlySales = Math.round(currentSubscriptions * salesPerSubscription);
+    const exactMonthlySales = currentSubscriptions * salesPerSubscription;
 
     const subscriptionRevenue = currentSubscriptions * monthlyPrice;
-    const salesRevenue = monthlySales * perSaleCost;
+    const salesRevenue = exactMonthlySales * perSaleCost;
     const totalRevenue = subscriptionRevenue + salesRevenue;
 
     const acquisitionCosts = newCustomers * acquisitionCost;
@@ -76,19 +73,20 @@ export function calculateProjection(
     const profitMargin = totalRevenue > 0 ? (profit / totalRevenue) * 100 : 0;
     const roi = totalCosts > 0 ? (profit / totalCosts) * 100 : 0;
 
+    // Round only for display in the returned object
     projection.push({
       month: month + 1,
-      subscriptions: currentSubscriptions,
-      sales: monthlySales,
-      subscriptionRevenue,
-      salesRevenue,
-      totalRevenue,
-      operatingCosts,
-      acquisitionCosts,
-      totalCosts,
-      profit,
-      profitMargin,
-      roi,
+      subscriptions: Math.round(currentSubscriptions),
+      sales: Math.round(exactMonthlySales),
+      subscriptionRevenue: Math.round(subscriptionRevenue),
+      salesRevenue: Math.round(salesRevenue),
+      totalRevenue: Math.round(totalRevenue),
+      operatingCosts: Math.round(operatingCosts),
+      acquisitionCosts: Math.round(acquisitionCosts),
+      totalCosts: Math.round(totalCosts),
+      profit: Math.round(profit),
+      profitMargin: Math.round(profitMargin * 10) / 10, // Round to 1 decimal place
+      roi: Math.round(roi * 10) / 10, // Round to 1 decimal place
     });
   }
 
