@@ -1,0 +1,133 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #F0F0EB;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Custom slider styles */
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+    background: #BFBFBA;
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #D4A27F;
+    cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #D4A27F;
+    cursor: pointer;
+}
+
+/* Card styles */
+.card {
+    background-color: #FAFAF7;
+    border: 1px solid #BFBFBA;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+}
+
+/* Button styles */
+.button {
+    background-color: #CC785C;
+    color: white;
+    border: none;
+    border-radius: 0.375rem;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.button:hover {
+    background-color: #B56A50;
+}
+
+/* Input styles */
+.input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #BFBFBA;
+    border-radius: 0.375rem;
+    background-color: #FAFAF7;
+    color: #191919;
+}
+
+/* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 0.5rem 0.75rem;
+    text-align: left;
+}
+
+th {
+    background-color: #E5E4DF;
+    color: #666663;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+tbody tr {
+    border-bottom: 1px solid #BFBFBA;
+}
+
+/* Tabs styles */
+.tabs {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.tab {
+    padding: 0.5rem 1rem;
+    background-color: #E5E4DF;
+    border: none;
+    cursor: pointer;
+}
+
+.tab.active {
+    background-color: #FAFAF7;
+    border-bottom: 2px solid #228B22;
+}
+
+/* Popover styles */
+.popover {
+    position: relative;
+    display: inline-block;
+}
+
+.popover-content {
+    position: absolute;
+    z-index: 10;
+    background-color: #FAFAF7;
+    border: 1px solid #BFBFBA;
+    border-radius: 0.375rem;
+    padding: 0.5rem;
+    width: 16rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
