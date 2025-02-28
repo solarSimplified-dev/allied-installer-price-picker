@@ -59,7 +59,8 @@ export default function App() {
   const roi = totalCosts > 0 ? (profit / totalCosts) * 100 : 0;
 
   // Calculate value proposition metrics
-  const statusQuoCost = currentSales * traditionalCAC * (100 / leadConversionRate);
+  const leadsNeeded = Math.ceil(currentSales * (100 / leadConversionRate));
+  const statusQuoCost = leadsNeeded * traditionalCAC;
   const yourSolutionCost = monthlyDisplay + currentSales * perSaleDisplay;
   const monthlySavings = statusQuoCost - yourSolutionCost;
   const savingsPercentage = statusQuoCost > 0 ? (monthlySavings / statusQuoCost) * 100 : 0;
@@ -167,6 +168,8 @@ export default function App() {
         valuePropositionROI={valuePropositionROI}
         effectiveCAC={effectiveCAC}
         annualSavings={annualSavings}
+        leadsNeeded={leadsNeeded}
+        currentSales={currentSales}
       />
     </div>
   );

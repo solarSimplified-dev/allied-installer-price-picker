@@ -23,6 +23,8 @@ export default function ValueProposition({
   valuePropositionROI,
   effectiveCAC,
   annualSavings,
+  leadsNeeded,
+  currentSales,
 }) {
   return (
     <Card
@@ -63,7 +65,7 @@ export default function ValueProposition({
             </div>
             <div>
               <label className="block mb-1 text-sm font-medium" style={{ color: "#262625" }}>
-                Lead-to-Customer Conversion Rate (%)
+                Traditional Lead Conversion Rate (%)
               </label>
               <Input
                 type="number"
@@ -87,23 +89,47 @@ export default function ValueProposition({
           <div className="grid gap-4 sm:grid-cols-2 mb-4" style={{ backgroundColor: "#E5E4DF" }}>
             <div className="p-4 rounded-md">
               <h3 className="font-medium mb-2" style={{ color: "#191919" }}>Status Quo</h3>
-              <p className="text-sm mb-1" style={{ color: "#666663" }}>
-                Cost with Traditional CAC
-              </p>
-              <p className="text-xl font-bold" style={{ color: "#191919" }}>
-                ${statusQuoCost.toLocaleString()}
-              </p>
+              <div className="space-y-2">
+                <div>
+                  <p className="text-sm mb-1" style={{ color: "#666663" }}>
+                    Leads Required for {currentSales.toLocaleString()} Sales
+                  </p>
+                  <p className="text-lg font-semibold" style={{ color: "#191919" }}>
+                    {leadsNeeded.toLocaleString()} leads
+                  </p>
+                </div>
+                <div>
+                  <p className="text-sm mb-1" style={{ color: "#666663" }}>
+                    Total Cost
+                  </p>
+                  <p className="text-xl font-bold" style={{ color: "#191919" }}>
+                    ${statusQuoCost.toLocaleString()}
+                  </p>
+                </div>
+              </div>
             </div>
             <div className="p-4 rounded-md">
               <h3 className="font-medium mb-2" style={{ color: "#191919" }}>
                 Our Platform
               </h3>
-              <p className="text-sm mb-1" style={{ color: "#666663" }}>
-                Monthly + Per-Sale
-              </p>
-              <p className="text-xl font-bold" style={{ color: "#191919" }}>
-                ${yourSolutionCost.toLocaleString()}
-              </p>
+              <div className="space-y-2">
+                <div>
+                  <p className="text-sm mb-1" style={{ color: "#666663" }}>
+                    Leads Required
+                  </p>
+                  <p className="text-lg font-semibold" style={{ color: "#191919" }}>
+                    {currentSales.toLocaleString()} leads
+                  </p>
+                </div>
+                <div>
+                  <p className="text-sm mb-1" style={{ color: "#666663" }}>
+                    Total Cost
+                  </p>
+                  <p className="text-xl font-bold" style={{ color: "#191919" }}>
+                    ${yourSolutionCost.toLocaleString()}
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -169,14 +195,18 @@ export default function ValueProposition({
               <ResponsiveContainer width="100%" height={200}>
                 <BarChart
                   data={[
-                    { name: "Status Quo", cost: statusQuoCost },
-                    { name: "Our Platform", cost: yourSolutionCost },
+                    { name: "Status Quo", cost: statusQuoCost, leads: leadsNeeded },
+                    { name: "Our Platform", cost: yourSolutionCost, leads: currentSales },
                   ]}
                 >
                   <XAxis dataKey="name" stroke="#666663" tick={{ fill: "#666663" }} />
                   <YAxis stroke="#666663" tick={{ fill: "#666663" }} />
                   <RechartTooltip
-                    formatter={(value) => `$${Number(value).toLocaleString()}`}
+                    formatter={(value, name, props) => {
+                      if (name === 'cost') return `$${Number(value).toLocaleString()}`;
+                      if (name === 'leads') return `${Number(value).toLocaleString()} leads`;
+                      return value;
+                    }}
                     contentStyle={{ backgroundColor: "#FAFAF7", borderColor: "#BFBFBA" }}
                     labelStyle={{ color: "#191919" }}
                   />
