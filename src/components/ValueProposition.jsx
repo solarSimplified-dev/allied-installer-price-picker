@@ -232,13 +232,7 @@ export default function ValueProposition({
                   />
                   <Bar 
                     dataKey="cost" 
-                    fill={(entry, index) => {
-                      if (statusQuoCost > yourSolutionCost) {
-                        return index === 0 ? "#BF4043" : "#228B22";
-                      } else {
-                        return index === 1 ? "#BF4043" : "#228B22";
-                      }
-                    }}
+                    fill={(entry) => entry.cost === Math.max(statusQuoCost, yourSolutionCost) ? "#BF4043" : "#228B22"}
                     radius={[4, 4, 0, 0]} 
                   />
                 </BarChart>
