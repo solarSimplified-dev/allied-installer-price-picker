@@ -16,6 +16,8 @@ export default function ValueProposition({
   setTraditionalCAC,
   leadConversionRate,
   setLeadConversionRate,
+  valuePropositionSales,
+  setValuePropositionSales,
   statusQuoCost,
   yourSolutionCost,
   monthlySavings,
@@ -24,7 +26,6 @@ export default function ValueProposition({
   effectiveCAC,
   annualSavings,
   leadsNeeded,
-  currentSales,
 }) {
   return (
     <Card
@@ -44,7 +45,26 @@ export default function ValueProposition({
           <p className="mb-4 text-sm" style={{ color: "#262625" }}>
             Compare the cost of traditional acquisition (Status Quo) vs. using our platform.
           </p>
-          <div className="grid gap-4 sm:grid-cols-2 mb-4">
+          <div className="grid gap-4 sm:grid-cols-3 mb-4">
+            <div>
+              <label className="block mb-1 text-sm font-medium" style={{ color: "#262625" }}>
+                Monthly Sales
+              </label>
+              <Input
+                type="number"
+                min="1"
+                value={valuePropositionSales}
+                onChange={(e) => {
+                  const val = parseFloat(e.target.value);
+                  setValuePropositionSales(isNaN(val) ? 0 : Math.max(1, val));
+                }}
+                style={{
+                  backgroundColor: "#FAFAF7",
+                  borderColor: "#BFBFBA",
+                  color: "#191919",
+                }}
+              />
+            </div>
             <div>
               <label className="block mb-1 text-sm font-medium" style={{ color: "#262625" }}>
                 Traditional CAC ($)
@@ -92,7 +112,7 @@ export default function ValueProposition({
               <div className="space-y-2">
                 <div>
                   <p className="text-sm mb-1" style={{ color: "#666663" }}>
-                    Leads Required for {currentSales.toLocaleString()} Sales
+                    Leads Required for {valuePropositionSales.toLocaleString()} Sales
                   </p>
                   <p className="text-lg font-semibold" style={{ color: "#191919" }}>
                     {leadsNeeded.toLocaleString()} leads
@@ -196,7 +216,7 @@ export default function ValueProposition({
                 <BarChart
                   data={[
                     { name: "Status Quo", cost: statusQuoCost, leads: leadsNeeded },
-                    { name: "Our Platform", cost: yourSolutionCost, leads: currentSales },
+                    { name: "Our Platform", cost: yourSolutionCost, leads: leadsNeeded },
                   ]}
                 >
                   <XAxis dataKey="name" stroke="#666663" tick={{ fill: "#666663" }} />

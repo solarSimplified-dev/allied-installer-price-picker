@@ -18,6 +18,7 @@ export default function App() {
   // Value Proposition state
   const [traditionalCAC, setTraditionalCAC] = useState(5000);
   const [leadConversionRate, setLeadConversionRate] = useState(10);
+  const [valuePropositionSales, setValuePropositionSales] = useState(500); // Average number of sales per month
 
   // Cash flow simulator state
   const [initialSubscriptions, setInitialSubscriptions] = useState(100);
@@ -59,13 +60,13 @@ export default function App() {
   const roi = totalCosts > 0 ? (profit / totalCosts) * 100 : 0;
 
   // Calculate value proposition metrics
-  const leadsNeeded = Math.ceil(currentSales * (100 / leadConversionRate));
-  const statusQuoCost = currentSales * traditionalCAC;
-  const yourSolutionCost = monthlyDisplay + currentSales * perSaleDisplay;
+  const leadsNeeded = Math.ceil(valuePropositionSales * (100 / leadConversionRate));
+  const statusQuoCost = valuePropositionSales * traditionalCAC;
+  const yourSolutionCost = monthlyDisplay + valuePropositionSales * perSaleDisplay;
   const monthlySavings = statusQuoCost - yourSolutionCost;
   const savingsPercentage = statusQuoCost > 0 ? (monthlySavings / statusQuoCost) * 100 : 0;
   const valuePropositionROI = yourSolutionCost > 0 ? (monthlySavings / yourSolutionCost) * 100 : 0;
-  const effectiveCAC = currentSales > 0 ? yourSolutionCost / currentSales : 0;
+  const effectiveCAC = valuePropositionSales > 0 ? yourSolutionCost / valuePropositionSales : 0;
   const annualSavings = monthlySavings * 12;
 
   // Update projection data when inputs change
@@ -161,6 +162,8 @@ export default function App() {
         setTraditionalCAC={setTraditionalCAC}
         leadConversionRate={leadConversionRate}
         setLeadConversionRate={setLeadConversionRate}
+        valuePropositionSales={valuePropositionSales}
+        setValuePropositionSales={setValuePropositionSales}
         statusQuoCost={statusQuoCost}
         yourSolutionCost={yourSolutionCost}
         monthlySavings={monthlySavings}
@@ -169,7 +172,6 @@ export default function App() {
         effectiveCAC={effectiveCAC}
         annualSavings={annualSavings}
         leadsNeeded={leadsNeeded}
-        currentSales={currentSales}
       />
     </div>
   );
