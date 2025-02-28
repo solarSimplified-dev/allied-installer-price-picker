@@ -13,6 +13,20 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom'],
+          'ui-components': [
+            '@radix-ui/react-slider',
+            '@radix-ui/react-tabs',
+            '@radix-ui/react-popover'
+          ],
+          'charts': ['recharts'],
+          'animations': ['framer-motion'],
+        },
+      },
+    },
   },
   esbuild: {
     loader: 'jsx',
