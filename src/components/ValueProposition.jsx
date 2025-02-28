@@ -9,6 +9,7 @@ import {
   YAxis,
   Tooltip as RechartTooltip,
   ResponsiveContainer,
+  Cell,
 } from "recharts";
 
 export default function ValueProposition({
@@ -230,11 +231,10 @@ export default function ValueProposition({
                     contentStyle={{ backgroundColor: "#FAFAF7", borderColor: "#BFBFBA" }}
                     labelStyle={{ color: "#191919" }}
                   />
-                  <Bar 
-                    dataKey="cost" 
-                    fill={(entry) => entry.cost === Math.max(statusQuoCost, yourSolutionCost) ? "#BF4043" : "#228B22"}
-                    radius={[4, 4, 0, 0]} 
-                  />
+                  <Bar dataKey="cost" radius={[4, 4, 0, 0]}>
+                    <Cell fill={statusQuoCost >= yourSolutionCost ? "#BF4043" : "#228B22"} />
+                    <Cell fill={yourSolutionCost >= statusQuoCost ? "#BF4043" : "#228B22"} />
+                  </Bar>
                 </BarChart>
               </ResponsiveContainer>
             </div>
