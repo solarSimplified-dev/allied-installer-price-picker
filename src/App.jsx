@@ -8,25 +8,25 @@ import { sliderValueToMonthly, monthlyToPerSale, calculateProjection } from './u
 export default function App() {
   // Admin panel state
   const [sliderVal, setSliderVal] = useState(0);
-  const [alpha, setAlpha] = useState(0.66);
-  const [basePerSale, setBasePerSale] = useState(4999);
+  const [alpha, setAlpha] = useState(2);
+  const [basePerSale, setBasePerSale] = useState(3500);
   const [monthlyOffset, setMonthlyOffset] = useState(0);
-  const [minMonthly, setMinMonthly] = useState(1);
+  const [minMonthly, setMinMonthly] = useState(25);
   const [maxMonthly, setMaxMonthly] = useState(50000);
   const [minCostPerSale, setMinCostPerSale] = useState(0);
 
   // Value Proposition state
   const [traditionalCAC, setTraditionalCAC] = useState(5000);
-  const [leadConversionRate, setLeadConversionRate] = useState(10);
-  const [valuePropositionSales, setValuePropositionSales] = useState(500); // Average number of sales per month
+  const [leadConversionRate, setLeadConversionRate] = useState(15);
+  const [valuePropositionSales, setValuePropositionSales] = useState(10); // Average number of sales per month
 
   // Cash flow simulator state
-  const [initialSubscriptions, setInitialSubscriptions] = useState(3);
-  const [salesPerSubscription, setSalesPerSubscription] = useState(5);
-  const [growthRate, setGrowthRate] = useState(10);
-  const [churnRate, setChurnRate] = useState(5);
+  const [initialSubscriptions, setInitialSubscriptions] = useState(1);
+  const [salesPerSubscription, setSalesPerSubscription] = useState(10);
+  const [growthRate, setGrowthRate] = useState(40);
+  const [churnRate, setChurnRate] = useState(15);
   const [customerLifetime, setCustomerLifetime] = useState(12);
-  const [operatingCosts, setOperatingCosts] = useState(10000);
+  const [operatingCosts, setOperatingCosts] = useState(1620.79);
   const [acquisitionCost, setAcquisitionCost] = useState(500);
   const [projectionData, setProjectionData] = useState([]);
 
