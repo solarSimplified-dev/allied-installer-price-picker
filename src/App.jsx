@@ -8,7 +8,7 @@ import { sliderValueToMonthly, monthlyToPerSale, calculateProjection } from './u
 export default function App() {
   // Admin panel state
   const [sliderVal, setSliderVal] = useState(0);
-  const [alpha, setAlpha] = useState(0.25);
+  const [alpha, setAlpha] = useState(0.66);
   const [basePerSale, setBasePerSale] = useState(4999);
   const [monthlyOffset, setMonthlyOffset] = useState(0);
   const [minMonthly, setMinMonthly] = useState(1);
@@ -21,7 +21,7 @@ export default function App() {
   const [valuePropositionSales, setValuePropositionSales] = useState(500); // Average number of sales per month
 
   // Cash flow simulator state
-  const [initialSubscriptions, setInitialSubscriptions] = useState(100);
+  const [initialSubscriptions, setInitialSubscriptions] = useState(3);
   const [salesPerSubscription, setSalesPerSubscription] = useState(5);
   const [growthRate, setGrowthRate] = useState(10);
   const [churnRate, setChurnRate] = useState(5);
