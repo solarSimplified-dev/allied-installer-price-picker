@@ -1,21 +1,27 @@
-// Value Proposition Evaluator Component
+import React from 'react';
+import { motion } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip as RechartTooltip,
+  ResponsiveContainer,
+} from "recharts";
 
-function ValuePropositionEvaluator({
+export default function ValueProposition({
   traditionalCAC,
   setTraditionalCAC,
-  currentSales,
-  monthlyDisplay,
-  perSaleDisplay
+  statusQuoCost,
+  yourSolutionCost,
+  monthlySavings,
+  savingsPercentage,
+  valuePropositionROI,
+  effectiveCAC,
+  annualSavings,
 }) {
-  // Value Proposition Evaluator calculations
-  const statusQuoCost = currentSales * traditionalCAC;
-  const yourSolutionCost = monthlyDisplay + currentSales * perSaleDisplay;
-  const monthlySavings = statusQuoCost - yourSolutionCost;
-  const savingsPercentage = statusQuoCost > 0 ? (monthlySavings / statusQuoCost) * 100 : 0;
-  const valuePropositionROI = yourSolutionCost > 0 ? (monthlySavings / yourSolutionCost) * 100 : 0;
-  const effectiveCAC = currentSales > 0 ? yourSolutionCost / currentSales : 0;
-  const annualSavings = monthlySavings * 12;
-
   return (
     <Card
       className="max-w-xl mx-auto p-4 shadow-lg rounded-2xl"

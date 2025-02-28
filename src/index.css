@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 60 10% 93%;
+    --card: 60 30% 98%;
+    --border: 60 3% 74%;
+    --text-primary: 0 0% 10%;
+    --text-secondary: 60 2% 15%;
+    --text-muted: 60 1% 40%;
+    --success: 120 60% 34%;
+    --error: 358 50% 50%;
+    --accent: 15 47% 58%;
+  }
+}
+
+/* Custom slider styles */
+.slider-track {
+  height: 4px;
+  background-color: var(--slider-track);
+}
+
+.slider-range {
+  background-color: var(--slider-range);
+}
+
+.slider-thumb {
+  width: 16px;
+  height: 16px;
+  background-color: var(--slider-thumb);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Custom tab styles */
+.tabs-trigger[data-state="active"] {
+  background-color: var(--card);
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Animation utilities */
+.animate-in {
+  animation: fadeIn 0.3s ease-in;
+}
+
+.animate-out {
+  animation: fadeOut 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}

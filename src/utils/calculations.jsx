@@ -1,7 +1,4 @@
-// Utility functions for pricing slider
-
-// Convert slider value to monthly price using logarithmic scale
-function sliderValueToMonthly(sliderVal, minMonthly, maxMonthly) {
+export function sliderValueToMonthly(sliderVal, minMonthly, maxMonthly) {
   const t = sliderVal / 100;
   const monthly = Math.exp(
     Math.log(minMonthly) + (Math.log(maxMonthly) - Math.log(minMonthly)) * t
@@ -9,8 +6,7 @@ function sliderValueToMonthly(sliderVal, minMonthly, maxMonthly) {
   return monthly;
 }
 
-// Calculate per-sale cost based on monthly subscription
-function monthlyToPerSale(
+export function monthlyToPerSale(
   monthly,
   alpha,
   basePerSale,
@@ -41,8 +37,7 @@ function monthlyToPerSale(
   return cost;
 }
 
-// Calculate 12-month projection based on inputs
-function calculateProjection(
+export function calculateProjection(
   initialSubscriptions,
   salesPerSubscription,
   monthlyPrice,
