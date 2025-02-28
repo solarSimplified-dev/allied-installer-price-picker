@@ -26,7 +26,7 @@ export default function PricingSlider({
         </motion.h1>
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
           <p className="mb-2 text-sm" style={{ color: "#262625" }}>
-            Move the slider to adjust your Monthly Subscription and Per-Sale Cost.
+            Move the slider to adjust your Subscription and Acquisition Cost.
           </p>
           <Slider
             className="my-4"
@@ -43,14 +43,14 @@ export default function PricingSlider({
           <div className="flex justify-between items-center">
             <div className="text-left">
               <p className="text-sm" style={{ color: "#666663" }}>
-                Monthly Subscription
+                Subscription
               </p>
               <p className="text-xl font-semibold" style={{ color: "#191919" }}>
                 ${monthlyDisplay.toLocaleString()}/month
               </p>
             </div>
             <div className="text-left">
-              <p className="text-sm" style={{ color: "#666663" }}>Per-Sale Cost</p>
+              <p className="text-sm" style={{ color: "#666663" }}>Acquisition Cost</p>
               <p className="text-xl font-semibold" style={{ color: "#191919" }}>
                 ${perSaleDisplay.toLocaleString()}/sale
               </p>

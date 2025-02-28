@@ -9,7 +9,7 @@ export default function App() {
   // Admin panel state
   const [sliderVal, setSliderVal] = useState(0);
   const [alpha, setAlpha] = useState(0.25);
-  const [basePerSale, setBasePerSale] = useState(5000);
+  const [basePerSale, setBasePerSale] = useState(4999);
   const [monthlyOffset, setMonthlyOffset] = useState(0);
   const [minMonthly, setMinMonthly] = useState(1);
   const [maxMonthly, setMaxMonthly] = useState(50000);

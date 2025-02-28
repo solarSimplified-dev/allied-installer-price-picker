@@ -46,7 +46,7 @@ export default function AdminPanel({
                   style={{ backgroundColor: "#FAFAF7", borderColor: "#BFBFBA" }}
                 >
                   <p className="text-sm" style={{ color: "#262625" }}>
-                    Controls the shape of the curve between Min and Max $/Sale.
+                    Controls the shape of the curve between Min and Max Acquisition Cost.
                     Values &lt; 1 make the curve more concave (drops quickly at first).
                     Values &gt; 1 make the curve more convex (drops slowly at first).
                     Alpha = 1 creates a linear relationship.
@@ -74,7 +74,7 @@ export default function AdminPanel({
               className="block mb-1 text-sm font-medium"
               style={{ color: "#262625" }}
             >
-              Max $/Sale
+              Max Acquisition Cost
             </label>
             <Input
               type="number"
@@ -109,8 +109,8 @@ export default function AdminPanel({
                 >
                   <p className="text-sm" style={{ color: "#262625" }}>
                     Shifts the curve left or right while maintaining the Min/Max boundaries.
-                    Positive values shift the curve left (costs drop faster at lower monthly values).
-                    Negative values shift the curve right (costs drop slower at lower monthly values).
+                    Positive values shift the curve left (costs drop faster at lower subscription values).
+                    Negative values shift the curve right (costs drop slower at lower subscription values).
                   </p>
                 </PopoverContent>
               </Popover>
@@ -135,7 +135,7 @@ export default function AdminPanel({
               className="block mb-1 text-sm font-medium"
               style={{ color: "#262625" }}
             >
-              Min $/Month
+              Min Subscription
             </label>
             <Input
               type="number"
@@ -156,7 +156,7 @@ export default function AdminPanel({
               className="block mb-1 text-sm font-medium"
               style={{ color: "#262625" }}
             >
-              Max $/Month
+              Max Subscription
             </label>
             <Input
               type="number"
@@ -177,7 +177,7 @@ export default function AdminPanel({
               className="block mb-1 text-sm font-medium"
               style={{ color: "#262625" }}
             >
-              Min $/Sale
+              Min Acquisition Cost
             </label>
             <Input
               type="number"
