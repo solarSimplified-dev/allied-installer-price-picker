@@ -104,30 +104,35 @@ export default function App() {
     : 0;
 
   return (
-    <div className="p-6 grid place-content-center gap-6" style={{ backgroundColor: "#F0F0EB" }}>
-      <AdminPanel
-        alpha={alpha}
-        setAlpha={setAlpha}
-        basePerSale={basePerSale}
-        setBasePerSale={setBasePerSale}
-        monthlyOffset={monthlyOffset}
-        setMonthlyOffset={setMonthlyOffset}
-        minMonthly={minMonthly}
-        setMinMonthly={setMinMonthly}
-        maxMonthly={maxMonthly}
-        setMaxMonthly={setMaxMonthly}
-        minCostPerSale={minCostPerSale}
-        setMinCostPerSale={setMinCostPerSale}
-      />
+    <div className="p-6 max-w-7xl mx-auto" style={{ backgroundColor: "#F0F0EB" }}>
+      {/* First row: Admin Panel and Price Picker side by side */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+        <AdminPanel
+          alpha={alpha}
+          setAlpha={setAlpha}
+          basePerSale={basePerSale}
+          setBasePerSale={setBasePerSale}
+          monthlyOffset={monthlyOffset}
+          setMonthlyOffset={setMonthlyOffset}
+          minMonthly={minMonthly}
+          setMinMonthly={setMinMonthly}
+          maxMonthly={maxMonthly}
+          setMaxMonthly={setMaxMonthly}
+          minCostPerSale={minCostPerSale}
+          setMinCostPerSale={setMinCostPerSale}
+        />
 
-      <PricingSlider
-        sliderVal={sliderVal}
-        setSliderVal={setSliderVal}
-        monthlyDisplay={monthlyDisplay}
-        perSaleDisplay={perSaleDisplay}
-      />
+        <PricingSlider
+          sliderVal={sliderVal}
+          setSliderVal={setSliderVal}
+          monthlyDisplay={monthlyDisplay}
+          perSaleDisplay={perSaleDisplay}
+        />
+      </div>
 
-      <CashFlowSimulator
+      {/* Second row: Cash Flow Simulator and Value Proposition side by side */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <CashFlowSimulator
         initialSubscriptions={initialSubscriptions}
         setInitialSubscriptions={setInitialSubscriptions}
         salesPerSubscription={salesPerSubscription}
@@ -157,7 +162,7 @@ export default function App() {
         finalSubs={finalSubs}
       />
 
-      <ValueProposition
+        <ValueProposition
         traditionalCAC={traditionalCAC}
         setTraditionalCAC={setTraditionalCAC}
         leadConversionRate={leadConversionRate}
@@ -173,6 +178,7 @@ export default function App() {
         annualSavings={annualSavings}
         leadsNeeded={leadsNeeded}
       />
+      </div>
     </div>
   );
 }

@@ -30,7 +30,7 @@ export default function ValueProposition({
 }) {
   return (
     <Card
-      className="max-w-xl mx-auto p-4 shadow-lg rounded-2xl"
+      className="w-full p-4 shadow-lg rounded-2xl"
       style={{ backgroundColor: "#FAFAF7", borderColor: "#BFBFBA" }}
     >
       <CardContent>
