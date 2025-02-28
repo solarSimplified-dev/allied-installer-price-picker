@@ -43,7 +43,7 @@ export default function ValueProposition({
         </motion.h1>
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
           <p className="mb-4 text-sm" style={{ color: "#262625" }}>
-            Compare the cost of traditional acquisition (Status Quo) vs. using our platform.
+            Compare the traditional customer acquisition cost vs. our costs.
           </p>
           <div className="grid gap-4 sm:grid-cols-3 mb-4">
             <div>
@@ -85,7 +85,7 @@ export default function ValueProposition({
             </div>
             <div>
               <label className="block mb-1 text-sm font-medium" style={{ color: "#262625" }}>
-                Traditional Lead Conversion Rate (%)
+                Conversion Rate (%)
               </label>
               <Input
                 type="number"
@@ -108,7 +108,7 @@ export default function ValueProposition({
 
           <div className="grid gap-4 sm:grid-cols-2 mb-4" style={{ backgroundColor: "#E5E4DF" }}>
             <div className="p-4 rounded-md">
-              <h3 className="font-medium mb-2" style={{ color: "#191919" }}>Status Quo</h3>
+              <h3 className="font-medium mb-2" style={{ color: "#191919" }}>Them</h3>
               <div className="space-y-2">
                 <div>
                   <p className="text-sm mb-1" style={{ color: "#666663" }}>
@@ -130,15 +130,15 @@ export default function ValueProposition({
             </div>
             <div className="p-4 rounded-md">
               <h3 className="font-medium mb-2" style={{ color: "#191919" }}>
-                Our Platform
+                Us
               </h3>
               <div className="space-y-2">
                 <div>
                   <p className="text-sm mb-1" style={{ color: "#666663" }}>
-                    Leads Required
+                    RFP's Accepted
                   </p>
                   <p className="text-lg font-semibold" style={{ color: "#191919" }}>
-                    {leadsNeeded.toLocaleString()} leads <span style={{ color: "#228B22" }}>(FREE)</span>
+                    {leadsNeeded.toLocaleString()} free leads <span style={{ color: "#228B22" }}> </span>
                   </p>
                 </div>
                 <div>
@@ -215,8 +215,8 @@ export default function ValueProposition({
               <ResponsiveContainer width="100%" height={200}>
                 <BarChart
                   data={[
-                    { name: "Status Quo", cost: statusQuoCost, leads: leadsNeeded },
-                    { name: "Our Platform", cost: yourSolutionCost, leads: leadsNeeded },
+                    { name: "Them", cost: statusQuoCost, leads: leadsNeeded },
+                    { name: "Us", cost: yourSolutionCost, leads: leadsNeeded },
                   ]}
                 >
                   <XAxis dataKey="name" stroke="#666663" tick={{ fill: "#666663" }} />
@@ -230,7 +230,17 @@ export default function ValueProposition({
                     contentStyle={{ backgroundColor: "#FAFAF7", borderColor: "#BFBFBA" }}
                     labelStyle={{ color: "#191919" }}
                   />
-                  <Bar dataKey="cost" fill="#228B22" radius={[4, 4, 0, 0]} />
+                  <Bar 
+                    dataKey="cost" 
+                    fill={(entry, index) => {
+                      if (statusQuoCost > yourSolutionCost) {
+                        return index === 0 ? "#BF4043" : "#228B22";
+                      } else {
+                        return index === 1 ? "#BF4043" : "#228B22";
+                      }
+                    }}
+                    radius={[4, 4, 0, 0]} 
+                  />
                 </BarChart>
               </ResponsiveContainer>
             </div>
