@@ -118,7 +118,7 @@ export default function ValueProposition({
                     Leads Required
                   </p>
                   <p className="text-lg font-semibold" style={{ color: "#191919" }}>
-                    {currentSales.toLocaleString()} leads
+                    {leadsNeeded.toLocaleString()} leads <span style={{ color: "#228B22" }}>(FREE)</span>
                   </p>
                 </div>
                 <div>

@@ -60,7 +60,7 @@ export default function App() {
 
   // Calculate value proposition metrics
   const leadsNeeded = Math.ceil(currentSales * (100 / leadConversionRate));
-  const statusQuoCost = leadsNeeded * traditionalCAC;
+  const statusQuoCost = currentSales * traditionalCAC;
   const yourSolutionCost = monthlyDisplay + currentSales * perSaleDisplay;
   const monthlySavings = statusQuoCost - yourSolutionCost;
   const savingsPercentage = statusQuoCost > 0 ? (monthlySavings / statusQuoCost) * 100 : 0;
