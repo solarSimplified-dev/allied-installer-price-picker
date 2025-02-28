@@ -17,6 +17,7 @@ export default function App() {
 
   // Value Proposition state
   const [traditionalCAC, setTraditionalCAC] = useState(5000);
+  const [leadConversionRate, setLeadConversionRate] = useState(10);
 
   // Cash flow simulator state
   const [initialSubscriptions, setInitialSubscriptions] = useState(100);
@@ -58,7 +59,7 @@ export default function App() {
   const roi = totalCosts > 0 ? (profit / totalCosts) * 100 : 0;
 
   // Calculate value proposition metrics
-  const statusQuoCost = currentSales * traditionalCAC;
+  const statusQuoCost = currentSales * traditionalCAC * (100 / leadConversionRate);
   const yourSolutionCost = monthlyDisplay + currentSales * perSaleDisplay;
   const monthlySavings = statusQuoCost - yourSolutionCost;
   const savingsPercentage = statusQuoCost > 0 ? (monthlySavings / statusQuoCost) * 100 : 0;
@@ -157,6 +158,8 @@ export default function App() {
       <ValueProposition
         traditionalCAC={traditionalCAC}
         setTraditionalCAC={setTraditionalCAC}
+        leadConversionRate={leadConversionRate}
+        setLeadConversionRate={setLeadConversionRate}
         statusQuoCost={statusQuoCost}
         yourSolutionCost={yourSolutionCost}
         monthlySavings={monthlySavings}

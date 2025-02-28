@@ -14,6 +14,8 @@ import {
 export default function ValueProposition({
   traditionalCAC,
   setTraditionalCAC,
+  leadConversionRate,
+  setLeadConversionRate,
   statusQuoCost,
   yourSolutionCost,
   monthlySavings,
@@ -59,13 +61,26 @@ export default function ValueProposition({
                 }}
               />
             </div>
-            <div
-              className="p-3 rounded-md"
-              style={{ backgroundColor: "#E5E4DF", marginTop: "auto" }}
-            >
-              <p className="text-sm" style={{ color: "#666663" }}>
-                Leads are free on our platform, with an average 10% lead-to-customer conversion rate, eliminating costly lead generation.
-              </p>
+            <div>
+              <label className="block mb-1 text-sm font-medium" style={{ color: "#262625" }}>
+                Lead-to-Customer Conversion Rate (%)
+              </label>
+              <Input
+                type="number"
+                min="0"
+                max="100"
+                step="0.1"
+                value={leadConversionRate}
+                onChange={(e) => {
+                  const val = parseFloat(e.target.value);
+                  setLeadConversionRate(isNaN(val) ? 0 : Math.min(100, Math.max(0, val)));
+                }}
+                style={{
+                  backgroundColor: "#FAFAF7",
+                  borderColor: "#BFBFBA",
+                  color: "#191919",
+                }}
+              />
             </div>
           </div>
 
